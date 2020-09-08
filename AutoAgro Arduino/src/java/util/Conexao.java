@@ -10,7 +10,7 @@ public class Conexao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost/fluxo_principal", "root", "user");
+                    "jdbc:mysql://localhost/fluxo_principal", "root", "");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }

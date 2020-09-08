@@ -14,10 +14,21 @@ public class Alimentador {
     private int idAlimentador;
     private String numeroIdentificacaoAlimentador;
     private String descricaoAlimentador;
+    private String status;
     
     private Usuario usuario;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     
 
+    
+    
     public String getDescricaoAlimentador() {
         return descricaoAlimentador;
     }

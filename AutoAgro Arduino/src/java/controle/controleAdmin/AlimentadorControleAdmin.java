@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controle;
+package controle.controleAdmin;
 
 import dao.AlimentadorDAO;
 import java.sql.SQLException;
@@ -22,7 +22,7 @@ import util.SessionContext;
 
 @ManagedBean
 @SessionScoped
-public class AlimentadorControle {
+public class AlimentadorControleAdmin {
     
     private List<Alimentador> lista;
     private Alimentador alimentador = new Alimentador();
@@ -33,20 +33,18 @@ public class AlimentadorControle {
         alimentador = new Alimentador();
         salvar = true;
         idUsuario = 0;
-        return "cadastroAlimentador.xhtml?faces-redirect=true";
-        
+        return "cadastroAlimentadorTesteAdmin.xhtml?faces-redirect=true";   
     }
     
-   public String preparaAlterar() {
+    public String preparaAlterar() {
         salvar = false;
         idUsuario = alimentador.getUsuario().getIdUsuario();
         return "configuracoesAlimentador.xhtml?faces-redirect=true";  
-    } 
-
+    }
+    
     public String paginaDescricao() {
 
         return "cadastroAlimentador_1.xhtml?faces-redirect=true";
-        
     }
     
     @PostConstruct
@@ -76,6 +74,7 @@ public class AlimentadorControle {
     }
     
     public void excluir() {
+        
         try {
             AlimentadorDAO.excluir(alimentador);
             atualizaLista();
@@ -84,6 +83,23 @@ public class AlimentadorControle {
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
     public List<Alimentador> getLista() {
         return lista;
     }
