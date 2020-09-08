@@ -28,6 +28,7 @@ public class AlimentadorControleAdmin {
     private Alimentador alimentador = new Alimentador();
     private boolean salvar = false;
     private int idUsuario;
+    private String statusAlimentador;
     
     public String preparaIncluir() {
         alimentador = new Alimentador();
@@ -73,14 +74,19 @@ public class AlimentadorControleAdmin {
         return "teste.xhtml?faces-redirect=true";
     }
     
-    public void excluir() {
-        
+    public String excluir() {
+        statusAlimentador = alimentador.getStatus();
+        if("on".equals(statusAlimentador)){
+            return ""; 
+        }else{
         try {
             AlimentadorDAO.excluir(alimentador);
             atualizaLista();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+            }
+        return "";
     }
     
     
