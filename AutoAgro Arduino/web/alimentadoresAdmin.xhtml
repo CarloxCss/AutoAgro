@@ -78,7 +78,7 @@
             <ui:define name="content">
                 <h:form>
                     <ui:repeat id="alimentadores"
-                               value="#{alimentadorControle.lista}"
+                               value="#{alimentadorControleAdmin.lista}"
                                var="ali">
 
 
@@ -88,7 +88,7 @@
                                     <span class="card-title">#{ali.descricaoAlimentador}</span>
                                     <h:commandLink 
                                         class="btn-floating halfway-fab waves-effect waves-light red"
-                                        action="#{paginaNovaControle.preparaIncluir()}">
+                                        action="#{alimentadorControleAdmin.excluir(ali.status, ali.idAlimentador)}">
                                         <i class="material-icons">trash</i>
                                     </h:commandLink>
 

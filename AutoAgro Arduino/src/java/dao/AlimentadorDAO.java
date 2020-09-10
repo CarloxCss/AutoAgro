@@ -51,12 +51,13 @@ public class AlimentadorDAO {
         con.close();
     }
         
-        public static void excluir(Alimentador alimentador) throws SQLException {
+        public static void excluir(int idAlimentador) throws SQLException {
 
         Connection con = Conexao.getConexao();
         String sql = "delete from alimentador WHERE idAlimentador=?";
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setInt(1, alimentador.getIdAlimentador());
+        stmt.setInt(1, idAlimentador);
+        System.out.println(sql);
         stmt.execute();
         stmt.close();
         con.close();
@@ -72,7 +73,6 @@ public class AlimentadorDAO {
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setInt(1, SessionContext.getInstance().getUsuarioLogado().getIdUsuario());
         ResultSet rs = stmt.executeQuery();
-        System.out.println(sql);
         while (rs.next()) {
 
             Usuario u = new Usuario();
@@ -87,6 +87,7 @@ public class AlimentadorDAO {
             a.setIdAlimentador(rs.getInt("idAlimentador"));
             a.setDescricaoAlimentador(rs.getString("descricaoAlimentador"));
             a.setNumeroIdentificacaoAlimentador(rs.getString("numeroIdentificacaoAlimentador"));
+            a.setStatus(rs.getString("status"));
             a.setUsuario(u);
           
             lista.add(a);

@@ -28,7 +28,8 @@ public class AlimentadorControleAdmin {
     private Alimentador alimentador = new Alimentador();
     private boolean salvar = false;
     private int idUsuario;
-    private String statusAlimentador;
+    private String statusAlimentador = "teste";
+    private int idAlimentador;
     
     public String preparaIncluir() {
         alimentador = new Alimentador();
@@ -51,7 +52,7 @@ public class AlimentadorControleAdmin {
     @PostConstruct
     public void atualizaLista() {
         try {
-            lista = AlimentadorDAO.getLista();
+            lista = dao.AlimentadorDAO.getLista();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -63,9 +64,9 @@ public class AlimentadorControleAdmin {
         alimentador.setUsuario(usuario);
         try {
             if (salvar) {
-                AlimentadorDAO.inserir(alimentador);
+                dao.AlimentadorDAO.inserir(alimentador);
             } else {
-                AlimentadorDAO.alterar(alimentador);
+                dao.AlimentadorDAO.alterar(alimentador);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -74,19 +75,22 @@ public class AlimentadorControleAdmin {
         return "teste.xhtml?faces-redirect=true";
     }
     
-    public String excluir() {
-        statusAlimentador = alimentador.getStatus();
-        if("on".equals(statusAlimentador)){
-            return ""; 
+    public String excluir(String statusAlimentador, int idAlimentador) {
+        this.statusAlimentador = statusAlimentador;
+        this.idAlimentador = idAlimentador;
+        System.out.println(statusAlimentador);
+        if("on".equals(this.statusAlimentador)){
+            return "confirmaExclusao.xhtml?faces-redirect=true"; 
         }else{
         try {
-            AlimentadorDAO.excluir(alimentador);
+            AlimentadorDAO.excluir(this.idAlimentador);
             atualizaLista();
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }   
+                return "alimentadoresAdmin.xhtml?faces-redirect=true";
         }
-            }
-        return "";
+
     }
     
     
