@@ -30,6 +30,7 @@ public class AutorizacaoFilter implements Filter {
         "/faces/cadastroAlimentadorTesteAdmin.xhtml",
         "/faces/cadastroAlimentador_1.xhtml",
         "/faces/cadastroRotina.xhtml",
+        "/faces/cadastroUsuario.xhtml",
         "/faces/teste_USER.xhtml",
         "/faces/teste_USER_2.xhtml",
         "/faces/teste.xhtml",

@@ -58,6 +58,7 @@ public class UsuarioControle {
         try {
             if(salvar){
                 UsuarioDAO.inserir(usuario);
+                return "login.xhtml?faces-redirect=true";
             }else{
                 UsuarioDAO.alterar(usuario);
             }
