@@ -77,6 +77,7 @@ public class UsuarioControle {
     public String login() {
         try {
             usuarioLogado = UsuarioDAO.getLogin(usuario);
+            String tipoDeUsuario = usuarioLogado.getTipoUsuario();
             if (usuarioLogado == null) {
                 System.out.println("USUÁRIO NÃO ENCONTRADO");
                 return "";
@@ -84,7 +85,9 @@ public class UsuarioControle {
 
                 System.out.println("USUÁRIO ENCONTRADO");
                 SessionContext.getInstance().setAttribute("usuario", usuarioLogado);
-
+                    if("admin".equals(tipoDeUsuario)){
+                        return "indexAdmin.xhtml?faces-redirect=true";
+                    }
             }
         } catch (SQLException e) {
             e.printStackTrace();

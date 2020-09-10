@@ -26,6 +26,7 @@ public class AutorizacaoFilter implements Filter {
         {"admin",
         "/faces/login.xhtml",
         "/faces/index.xhtml",
+        "/faces/indexAdmin.xhtml",
         "/faces/cadastroAlimentador.xhtml",
         "/faces/cadastroAlimentadorTesteAdmin.xhtml",
         "/faces/cadastroAlimentador_1.xhtml",
@@ -39,7 +40,15 @@ public class AutorizacaoFilter implements Filter {
         },
 
         {"comum",
-        "/faces/login.xhtml",}
+        "/faces/login.xhtml",
+        "/faces/index.xhtml",
+        "/faces/cadastroAlimentador.xhtml",
+        "/faces/cadastroAlimentador_1.xhtml",
+        "/faces/cadastroRotina.xhtml",
+        "/faces/cadastroUsuario.xhtml",
+        "/faces/teste_USER.xhtml",
+        "/faces/teste_USER_2.xhtml",
+        "/faces/teste.xhtml",}
     };
 
     @Override
