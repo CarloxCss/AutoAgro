@@ -35,6 +35,11 @@ public class UsuarioControle {
         return "cadastroUsuario.xhtml?faces-redirect=true";
     
     }
+    public String preparaAdmin(){
+        
+        return "alimentadoresAdmin.xhtml?faces-redirect=true";
+    
+    }
     
     public String preparaAlterar(){
         salvar = false;

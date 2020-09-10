@@ -6,23 +6,36 @@
       xmlns:p="http://primefaces.org/ui">
     <body>
         <!-- PAINEL SUPERIOR COM MENU-->      
-    <nav class="light-blue lighten-1" role="navigation"> <!-- documentação sobre cores https://materializecss.com/color.html -->
-        <div class="nav-wrapper container"><a id="logo-container" href="#{indexControle.teste()}" class="brand-logo">Auto Agro</a>
+    <nav class="light-blue lighten-1" role="navigation"> 
+        <!-- documentação sobre cores https://materializecss.com/color.html -->
+        <div class="nav-wrapper container"><a id="logo-container" href="#
+                                              {indexControle.teste()}" class="brand-logo">Auto Agro</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#{alimentadorControle.preparaIncluir()}"><i class="material-icons right">add</i>Adicionar Alimentador </a></li>
+                
+                
+                
+                <li><a href="#{alimentadorControle.preparaIncluir()}">
+                        <!--botao +-->
+                        <i class="material-icons right"> add </i> 
+                       Adicionar Alimentador </a>
+                </li>
+                
+                
+                
                 <li><h:form>
-                <h:commandLink action="#{indexControle.sair()}">
-                                <i class="material-icons right">directions_run</i>Logout
-                </h:commandLink>
-                </h:form></li>
+                    <h:commandLink action="#{usuarioControle.preparaAdmin()}">
+                       Admin
+                    </h:commandLink>
+                    
+                    
+                </h:form></li>       
             </ul>
 
-            <ul id="nav-mobile" class="sidenav"> <!-- MENU MOBILE -->
-                <li><a href="#{facesContext.externalContext.requestContextPath}/faces/paginasAdmin/menuAdmin.xhtml"><i class="material-icons right">home</i>Inicial </a></li>
-                <li><a href="#"><i class="material-icons right">directions_run</i>Logout </a></li>
-                
-            </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <i class="material-icons">menu</i></a>
         </div>
     </nav> 
 
