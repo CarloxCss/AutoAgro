@@ -15,7 +15,8 @@
         <ui:decorate template="/template/layout.xhtml">
             <ui:define name="content">
                 
-                <br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+               
 
                 <div class="container">
 
@@ -35,20 +36,26 @@
                     </div>
 
                     <div class="input-field col s6">
-                        <h:inputText id="senha"
+                        <h:inputSecret id="senha"
                                      required="true" value="#{usuarioControle.usuario.senha}" maxlength="9"/>
                         <label for="siape">Senha</label>
                     </div>
                     
                     <h:commandLink class="waves-effect waves-light btn"  action="#{usuarioControle.login()}">
-                            <i class="material-icons right">save</i>Salvar
+                            Salvar
                         </h:commandLink>
                 </h:form>
-                    <h:form>                        
+                    <h:form>    
+                        <br></br>
                     <h:commandLink class="waves-effect waves-light btn"  action="#{usuarioControle.preparaIncluir()}">
-                            <i class="material-icons right">save</i>Cadastrar
+                            Cadastrar
                         </h:commandLink>
-                    </h:form>>
+                        
+                         <h:commandLink class="waves-effect waves-light btn"  action="#{usuarioControle.preparaIncluir()}">
+                             admin
+                        </h:commandLink>
+                        
+                    </h:form>
                     <br/>
                 </div>
               
