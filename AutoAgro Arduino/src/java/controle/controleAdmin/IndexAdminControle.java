@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controle;
+package controle.controleAdmin;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,6 +22,12 @@ public class IndexAdminControle {
             
         return "index.xhtml?faces-redirect=true";
 
+    }
+        
+        public String alimentadoresAdmin(){
+        
+        return "alimentadoresAdmin.xhtml?faces-redirect=true";
+            
     }
         
     public String teste() {

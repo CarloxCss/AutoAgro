@@ -52,7 +52,7 @@ public class AlimentadorControleAdmin {
     @PostConstruct
     public void atualizaLista() {
         try {
-            lista = dao.AlimentadorDAO.getLista();
+            lista = dao.daoAdimin.AlimentadorAdminDAO.getLista();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -111,6 +111,7 @@ public class AlimentadorControleAdmin {
     
 
     public List<Alimentador> getLista() {
+        atualizaLista();
         return lista;
     }
 

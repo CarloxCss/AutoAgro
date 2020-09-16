@@ -64,12 +64,13 @@ public class AlimentadorAdminDAO {
     public static List<Alimentador> getLista() throws SQLException {
         List<Alimentador> lista = new ArrayList<Alimentador>();
         Connection con = Conexao.getConexao();
-        String sql = "SELECT * FROM alimentador a, usuario u\n" +
-                     "WHERE u.idUsuario = a.Usuario_idUsuario AND\n" +
-                     "a.Usuario_idUsuario = ?\n" +
-                     "ORDER BY a.idAlimentador";
+        String sql = "SELECT \n" +
+                     "*\n" +
+                     "FROM \n" +
+                     "	alimentador a\n" +
+                     "LEFT JOIN\n" +
+                     "	usuario u ON u.idUsuario = a.Usuario_idUsuario";
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setInt(1, SessionContext.getInstance().getUsuarioLogado().getIdUsuario());
         ResultSet rs = stmt.executeQuery();
         System.out.println(sql);
         while (rs.next()) {
