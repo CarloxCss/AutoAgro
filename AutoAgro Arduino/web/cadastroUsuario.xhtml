@@ -30,32 +30,32 @@
                     
                     <div class="input-field col s6">
                         <h:inputText id="nome"
-                                     required="true" value="#{usuarioControle.usuario.nome}" maxlength="100"/>
+                                     required="true" value="#{usuarioControleTesteMail.usuario.nome}" maxlength="100"/>
                         <label for="siape">Nome</label>
                     </div>
                     
                 <div class="input-field col s6">
                         <h:inputText id="nomeDeUsuario"
-                                     required="true" value="#{usuarioControle.usuario.nomeDeUsuario}" maxlength="100"/>
+                                     required="true" value="#{usuarioControleTesteMail.usuario.nomeDeUsuario}" maxlength="100"/>
                         <label for="siape">Nome de usuario</label>
                     </div>
                     
                     <div class="input-field col s6">
                         <h:inputText id="email"
-                                     required="true" value="#{usuarioControle.usuario.email}" maxlength="100"/>
+                                     required="true" value="#{usuarioControleTesteMail.usuario.email}" maxlength="100"/>
                         <label for="siape">Email</label>
                     </div>
 
                     <div class="input-field col s6">
                         <h:inputSecret
                             id="senha"
-                                     required="true" value="#{usuarioControle.usuario.senha}" maxlength="9"/>
+                                     required="true" value="#{usuarioControleTesteMail.usuario.senha}" maxlength="9"/>
                         <label for="siape">Senha</label>
                     </div>
               
                     <br></br><br></br>
                     
-                    <h:commandLink class="waves-effect waves-light btn"  action="#{usuarioControle.salvar()}">
+                    <h:commandLink class="waves-effect waves-light btn"  action="#{usuarioControleTesteMail.salvar()}">
                             <i class="material-icons right">save</i>salvar
                         </h:commandLink>
                     <br></br><br></br>
