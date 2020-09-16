@@ -23,6 +23,7 @@ public class UsuarioDAO {
     public static void inserir(Usuario usuario) throws SQLException{
         Connection con = Conexao.getConexao();
         String sql = "insert into usuario (nome, email, senha, nomeDeUsuario, tipoUsuario) values (?, ?, password(md5(?)), ?, 'comum')";
+        System.out.println(sql);
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, usuario.getNome());
         stmt.setString(2, usuario.getEmail());
