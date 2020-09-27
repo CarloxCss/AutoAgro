@@ -30,6 +30,18 @@ public class IndexAdminControle {
             
     }
         
+        public String desvincularAlimentadores(){
+        
+        return "desvincularAlimentadorAdmin.xhtml?faces-redirect=true";
+            
+    }
+        
+        public String vincularAlimentadores(){
+        
+        return "vincularAlimentadorAdmin.xhtml?faces-redirect=true";
+            
+    }        
+        
     public String teste() {
             
         return "teste.xhtml?faces-redirect=true";

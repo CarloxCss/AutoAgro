@@ -96,29 +96,12 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Dia</th>
-                                                <th>Hora</th>
-                                                <th>Minuto</th>
-                                                <th>Quantia</th>
+                                                <th>Usuario: #{ali.usuario.nomeDeUsuario}</th>
+                                                <th>Status: #{ali.status}</th>
+                                                <th>idUsuario: #{ali.usuario.idUsuario}</th>
                                             </tr>
                                         </thead>
                                     </table>
-                                    <ui:repeat id="alimentadores"
-                                               value="#{paginaNovaControle.getLista(ali.idAlimentador)}"
-                                               var="rot">    
-                                        <table>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>#{rot.dia}</td>
-                                                    <td>#{rot.hora}</td>
-                                                    <td>#{rot.minuto}</td>
-                                                    <td>#{rot.quantia}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </ui:repeat>
-
                                 </div>
                             </div>
                         </div>

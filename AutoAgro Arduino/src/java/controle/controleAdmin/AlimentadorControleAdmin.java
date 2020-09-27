@@ -49,6 +49,28 @@ public class AlimentadorControleAdmin {
         return "cadastroAlimentador_1.xhtml?faces-redirect=true";
     }
     
+    public String desvincularAlimentador() {
+        
+        try {
+            dao.daoAdimin.AlimentadorAdminDAO.desvincularAlimentador(alimentador);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return "indexAdmin.xhtml?faces-redirect=true";
+    }
+    
+        public String vincularAlimentador() {
+        
+        try {
+            dao.daoAdimin.AlimentadorAdminDAO.getIdUsuario(alimentador);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return "indexAdmin.xhtml?faces-redirect=true";
+    }
+    
     @PostConstruct
     public void atualizaLista() {
         try {

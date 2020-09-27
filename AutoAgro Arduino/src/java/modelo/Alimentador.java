@@ -15,8 +15,17 @@ public class Alimentador {
     private String numeroIdentificacaoAlimentador;
     private String descricaoAlimentador;
     private String status;
+    private String emailUsuario;
     
     private Usuario usuario;
+
+    public String getEmailUsuario() {
+        return emailUsuario;
+    }
+
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
+    }
 
     public String getStatus() {
         return status;

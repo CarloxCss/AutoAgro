@@ -50,6 +50,57 @@ public class AlimentadorAdminDAO {
         con.close();
     }
     
+    public static void desvincularAlimentador(Alimentador alimentador) throws SQLException {
+
+        Connection con = Conexao.getConexao();
+        String sql = "update alimentador set Usuario_idUsuario=NULL\n" +
+                     "WHERE numeroIdentificacaoAlimentador=?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, alimentador.getNumeroIdentificacaoAlimentador());
+        stmt.execute();
+        stmt.close();
+        con.close();
+    }
+    
+        public static void getIdUsuario(Alimentador alimentador) throws SQLException {
+        Connection con = Conexao.getConexao();
+        String sql = "SELECT\n" +
+                     "*\n" +
+                     "FROM\n" +
+                     "usuario u\n" +
+                     "WHERE\n" +
+                     "u.email = ?";
+         PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, alimentador.getEmailUsuario());
+                System.out.println(sql);
+        ResultSet rs = stmt.executeQuery();
+          while (rs.next()) {
+            Usuario u = new Usuario();
+            u.setIdUsuario(rs.getInt("idUsuario"));
+            u.setNome(rs.getString("nome"));
+            u.setEmail(rs.getString("email"));
+            u.setSenha(rs.getString("senha"));
+            u.setNomeDeUsuario(rs.getString("nomeDeUsuario"));
+            u.setTipoUsuario(rs.getString("tipoUsuario"));
+            alimentador.setUsuario(u);
+          }
+        System.out.println(sql);
+        dao.daoAdimin.AlimentadorAdminDAO.vincularAlimentador(alimentador);
+    }   
+    
+        public static void vincularAlimentador(Alimentador alimentador) throws SQLException {
+
+        Connection con = Conexao.getConexao();
+        String sql = "update alimentador set Usuario_idUsuario=?\n" +
+                     "WHERE numeroIdentificacaoAlimentador=?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, alimentador.getUsuario().getIdUsuario());
+        stmt.setString(2, alimentador.getNumeroIdentificacaoAlimentador());
+        stmt.execute();
+        stmt.close();
+        con.close();
+    }
+    
     public static void excluir(Alimentador alimentador) throws SQLException {
 
         Connection con = Conexao.getConexao();
@@ -87,6 +138,7 @@ public class AlimentadorAdminDAO {
             a.setIdAlimentador(rs.getInt("idAlimentador"));
             a.setDescricaoAlimentador(rs.getString("descricaoAlimentador"));
             a.setNumeroIdentificacaoAlimentador(rs.getString("numeroIdentificacaoAlimentador"));
+            a.setStatus(rs.getString("status"));
             a.setUsuario(u);
           
             lista.add(a);
