@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controle;
+package controle.controleAdmin;
 
-import dao.AlimentadorDAO;
+import controle.*;
+import dao.RotinaDAO;
 import java.sql.SQLException;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.Alimentador;
+import modelo.Rotina;
 import modelo.Usuario;
 import util.SessionContext;
 
@@ -22,82 +24,99 @@ import util.SessionContext;
 
 @ManagedBean
 @SessionScoped
-public class AlimentadorControle {
+public class RotinaControleAdmin {
     
-    private List<Alimentador> lista;
-    private Alimentador alimentador = new Alimentador();
+    public int num = 0;
+    private List<Rotina> lista;
+    private Rotina rotina = new Rotina();
     private boolean salvar = false;
+    private int idAlimentador;
     private int idUsuario;
     
     public String preparaIncluir() {
-        alimentador = new Alimentador();
+        rotina = new Rotina();
         salvar = true;
+        idAlimentador = 0;
         idUsuario = 0;
-        return "cadastroAlimentador.xhtml?faces-redirect=true";
+
         
+        return "cadastroRotina.xhtml?faces-redirect=true";
     }
-    
-   public String preparaAlterar() {
+        
+    public String preparaAlterar() {
         salvar = false;
-        idUsuario = alimentador.getUsuario().getIdUsuario();
-        return "configuracoesAlimentador.xhtml?faces-redirect=true";  
-    } 
-
-    public String paginaDescricao() {
-
-        return "cadastroAlimentador_1.xhtml?faces-redirect=true";
+        idAlimentador = rotina.getAlimentador().getIdAlimentador();
+        idUsuario = rotina.getUsuario().getIdUsuario();
+        return "cadastroRotina.xhtml?faces-redirect=true";
         
     }
     
     @PostConstruct
     public void atualizaLista() {
         try {
-            lista = AlimentadorDAO.getLista();
+            lista = dao.daoAdimin.RotinaAdminDAO.getLista();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }
+    }   
     
     public String salvar() {
+        Alimentador alimentador = new Alimentador();
+        alimentador.setIdAlimentador(idAlimentador);
+        
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(SessionContext.getInstance().getUsuarioLogado().getIdUsuario());
-        alimentador.setUsuario(usuario);
+        
+        rotina.setAlimentador(alimentador);
+        rotina.setUsuario(usuario);
         try {
             if (salvar) {
-                AlimentadorDAO.vincularAlimentador(alimentador);
+                RotinaDAO.inserir(rotina);
             } else {
-                AlimentadorDAO.alterar(alimentador);
+                RotinaDAO.alterar(rotina);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         atualizaLista();
-        return "teste.xhtml?faces-redirect=true";
+        return "manutencaoRotina.xhtml?faces-redirect=true";
     }
     
     public void excluir() {
         try {
-            AlimentadorDAO.excluir(alimentador);
+            RotinaDAO.excluir(rotina);
             atualizaLista();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
+
+    public int getIdAlimentador() {
+        return idAlimentador;
+    }
+
+    public void setIdAlimentador(int idAlimentador) {
+        this.idAlimentador = idAlimentador;
+    }
     
-    public List<Alimentador> getLista() {
+    
+    
+
+    public List<Rotina> getLista() {
+        atualizaLista();
         return lista;
     }
 
-    public void setLista(List<Alimentador> lista) {
+    public void setLista(List<Rotina> lista) {
         this.lista = lista;
     }
 
-    public Alimentador getAlimentador() {
-        return alimentador;
+    public Rotina getRotina() {
+        return rotina;
     }
 
-    public void setAlimentador(Alimentador alimentador) {
-        this.alimentador = alimentador;
+    public void setRotina(Rotina rotina) {
+        this.rotina = rotina;
     }
 
     public boolean isSalvar() {
@@ -114,6 +133,14 @@ public class AlimentadorControle {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
     
     

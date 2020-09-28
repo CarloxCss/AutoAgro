@@ -22,6 +22,20 @@ import util.SessionContext;
  */
 public class AlimentadorDAO {
     
+        public static void vincularAlimentador(Alimentador alimentador) throws SQLException {
+
+        Connection con = Conexao.getConexao();
+        String sql = "update alimentador set Usuario_idUsuario=?, status='vinculado', descricaoAlimentador=?\n" +
+                     "WHERE numeroIdentificacaoAlimentador=?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, SessionContext.getInstance().getUsuarioLogado().getIdUsuario());
+        stmt.setString(2, alimentador.getDescricaoAlimentador());
+        stmt.setString(3, alimentador.getNumeroIdentificacaoAlimentador());
+        stmt.execute();
+        stmt.close();
+        con.close();
+    }    
+    
         public static void inserir(Alimentador alimentador) throws SQLException {
 
         Connection con = Conexao.getConexao();

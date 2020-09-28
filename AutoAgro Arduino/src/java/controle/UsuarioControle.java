@@ -82,7 +82,6 @@ public class UsuarioControle {
                 System.out.println("USUÁRIO NÃO ENCONTRADO");
                 return "";
             } else {
-
                 System.out.println("USUÁRIO ENCONTRADO");
                 SessionContext.getInstance().setAttribute("usuario", usuarioLogado);
                     if("admin".equals(tipoDeUsuario)){
@@ -105,6 +104,7 @@ public class UsuarioControle {
     }
 
     public List<Usuario> getLista() {
+        atualizaLista();
         return lista;
     }
 

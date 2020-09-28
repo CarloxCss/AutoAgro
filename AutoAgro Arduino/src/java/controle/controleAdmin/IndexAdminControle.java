@@ -40,7 +40,13 @@ public class IndexAdminControle {
         
         return "vincularAlimentadorAdmin.xhtml?faces-redirect=true";
             
-    }        
+    }    
+        
+        public String rotinasAdmin(){
+        
+        return "rotinasAdmin.xhtml?faces-redirect=true";
+            
+    }
         
     public String teste() {
             

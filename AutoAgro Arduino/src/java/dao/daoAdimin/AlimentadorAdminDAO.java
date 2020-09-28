@@ -53,7 +53,7 @@ public class AlimentadorAdminDAO {
     public static void desvincularAlimentador(Alimentador alimentador) throws SQLException {
 
         Connection con = Conexao.getConexao();
-        String sql = "update alimentador set Usuario_idUsuario=NULL\n" +
+        String sql = "update alimentador set Usuario_idUsuario=NULL, status='desvinculado', descricaoAlimentador=NULL\n" +
                      "WHERE numeroIdentificacaoAlimentador=?";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, alimentador.getNumeroIdentificacaoAlimentador());
@@ -91,7 +91,7 @@ public class AlimentadorAdminDAO {
         public static void vincularAlimentador(Alimentador alimentador) throws SQLException {
 
         Connection con = Conexao.getConexao();
-        String sql = "update alimentador set Usuario_idUsuario=?\n" +
+        String sql = "update alimentador set Usuario_idUsuario=?, status='vinculado', descricaoAlimentador='Novo Alimentador'\n" +
                      "WHERE numeroIdentificacaoAlimentador=?";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setInt(1, alimentador.getUsuario().getIdUsuario());

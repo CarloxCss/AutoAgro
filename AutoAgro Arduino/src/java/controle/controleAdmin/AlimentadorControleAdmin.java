@@ -101,7 +101,7 @@ public class AlimentadorControleAdmin {
         this.statusAlimentador = statusAlimentador;
         this.idAlimentador = idAlimentador;
         System.out.println(statusAlimentador);
-        if("on".equals(this.statusAlimentador)){
+        if("vinculado".equals(this.statusAlimentador)){
             return "confirmaExclusao.xhtml?faces-redirect=true"; 
         }else{
         try {
