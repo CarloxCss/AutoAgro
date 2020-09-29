@@ -50,19 +50,19 @@
             <div class="nav-wrapper container"><a id="logo-container" href="#
                                                   {indexControle.teste()}" class="brand-logo">Auto Agro</a>
               
-
+                                                  <h:form>
                     <div id="divBusca">
                     
-                        <input type="text" id="txtBusca" placeholder="Buscar..."/>
+                        <input type="text" id="txtBusca" placeholder="Buscar..." required="true" value="#{rotinaControleAdmin.rotina.emailUsuario}"/>
                        
-                        <a href="#{indexAdminControle.teste()}">
-                         <button id="btnBusca">
-                       Buscar
-                         </button>
-                            </a>
+
+                        
+                        <h:commandLink action="#{rotinaControleAdmin.buscar()}">
+                            Salvar
+                      </h:commandLink>
                       
                       
-                    </div>              
+                    </div>   </h:form>           
          
                 <a href="#" data-target="nav-mobile" class="sidenav-trigger">
                     <i class="material-icons">menu</i></a>

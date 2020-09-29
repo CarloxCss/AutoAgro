@@ -76,6 +76,49 @@ public class RotinaAdminDAO {
         con.close();
     }
     
+    public static List<Rotina> buscar(Rotina rotina) throws SQLException {
+        List<Rotina> lista = new ArrayList<Rotina>();
+        Connection con = Conexao.getConexao();
+        String sql = "SELECT * FROM rotina r, usuario u, alimentador a\n" +
+"                     WHERE u.idUsuario = r.Usuario_idUsuario AND\n" +
+"                     r.Alimentador_idAlimentador = a.idAlimentador AND\n" +
+"                     r.Usuario_idUsuario = ?\n" +
+"                     ORDER BY r.idRotina";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, rotina.getEmailUsuario());
+        ResultSet rs = stmt.executeQuery();
+        System.out.println(sql);
+        while (rs.next()) {
+
+            Usuario u = new Usuario();
+            u.setIdUsuario(rs.getInt("idUsuario"));
+            u.setNome(rs.getString("nome"));
+            u.setEmail(rs.getString("email"));
+            u.setSenha(rs.getString("senha"));
+            u.setNomeDeUsuario(rs.getString("nomeDeUsuario"));
+            u.setTipoUsuario(rs.getString("tipoUsuario"));
+            
+            Alimentador a = new Alimentador();
+            a.setIdAlimentador(rs.getInt("idAlimentador"));
+            a.setDescricaoAlimentador(rs.getString("descricaoAlimentador"));
+            a.setNumeroIdentificacaoAlimentador(rs.getString("numeroIdentificacaoAlimentador"));
+            a.setUsuario(u);
+
+            Rotina r = new Rotina();
+            r.setIdRotina(rs.getInt("idRotina"));
+            r.setHora(rs.getString("hora"));
+            r.setMinuto(rs.getString("minuto"));
+            r.setQuantia(rs.getString("quantia"));
+            r.setDia(rs.getString("dia"));
+            r.setStatus(rs.getString("status"));
+            r.setAlimentador(a);
+            r.setUsuario(u);
+          
+            lista.add(r);
+        }
+        return lista;
+    }
+    
     public static List<Rotina> getLista() throws SQLException {
         List<Rotina> lista = new ArrayList<Rotina>();
         Connection con = Conexao.getConexao();

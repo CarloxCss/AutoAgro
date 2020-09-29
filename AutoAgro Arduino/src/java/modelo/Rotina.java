@@ -18,10 +18,19 @@ public class Rotina {
     private String dia;
     private String status;
     private String alimentadorRot;
+    private String emailUsuario;
     
     private Alimentador alimentador;
     private Usuario usuario;
 
+    public String getEmailUsuario() {
+        return emailUsuario;
+    }
+
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
+    }
+      
     public String getAlimentadorRot() {
         return alimentadorRot;
     }

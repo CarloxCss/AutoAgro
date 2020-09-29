@@ -51,6 +51,14 @@ public class RotinaControleAdmin {
         
     }
     
+        public void buscar() {
+        try {
+            lista = dao.daoAdimin.RotinaAdminDAO.buscar(rotina);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     @PostConstruct
     public void atualizaLista() {
         try {
@@ -58,7 +66,9 @@ public class RotinaControleAdmin {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }   
+    }  
+    
+
     
     public String salvar() {
         Alimentador alimentador = new Alimentador();
@@ -103,7 +113,6 @@ public class RotinaControleAdmin {
     
 
     public List<Rotina> getLista() {
-        atualizaLista();
         return lista;
     }
 
